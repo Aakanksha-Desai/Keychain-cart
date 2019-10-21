@@ -53,7 +53,7 @@ if(isset($_POST['reg_user'])) {
 
 //login user
 
-if(isset($_GET['login_user'])){
+if(isset($_POST['login_user'])){
 	$username = mysqli_real_escape_string($db, $_POST['uname']);
     $password = mysqli_real_escape_string($db, $_POST['psw']);
 
@@ -74,6 +74,8 @@ if(isset($_GET['login_user'])){
   	  header('location: project.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");
+		$message="Wrong username/password combination";
+		echo"<script type='text/javascript'>alert('$message');</script>";
   	}
   }
 
